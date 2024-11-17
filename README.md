@@ -1,3 +1,9 @@
-# FusionHub-Backend [AdminService]
-FusionHub-FRONTEND : https://github.com/manishraj27/FusionHub-FRONTEND.git
-StudentService : [https://github.com/manishraj27/FusionHub-BACKEND-AdminService](https://github.com/manishraj27/FusionHub-BACKEND-StudentService)
+# FusionHub
+### BACKEND
+- EurekaServer - https://github.com/manishraj27/FusionHub-BACKEND-EurekaServer/edit/main/README.md
+- APIGateway - https://github.com/manishraj27/FusionHub-BACKEND-APIGateway
+- StudentService - https://github.com/manishraj27/FusionHub-BACKEND-StudentService
+- AdminService - https://github.com/manishraj27/FusionHub-BACKEND-AdminService
+
+### FRONTEND
+- https://github.com/manishraj27/FusionHub-FRONTEND
