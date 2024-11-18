@@ -13,6 +13,8 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+	
+	
 
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -20,8 +22,10 @@ public class SecurityConfig {
             .authorizeHttpRequests(authorize -> authorize
             	.requestMatchers("/admin/auth/**").permitAll()
             	.requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
-                .requestMatchers("/admin/students/**").hasAuthority("ROLE_ADMIN") // Restrict admin endpoints
+               .requestMatchers("/admin/students/**").hasAuthority("ROLE_ADMIN") // Restrict admin endpoints
+//            	.requestMatchers("/admin/students/**").permitAll()
                 .anyRequest().permitAll()) 
+            
             .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
             .csrf(csrf -> csrf.disable());
 
