@@ -16,6 +16,7 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public Admin findAdminProfileByJwt(String jwt) throws Exception {
 		String email = JwtProvider.getEmailFromToken(jwt);
+		String role = JwtProvider.getRoleFromToken(jwt);
 		return findAdminByEmail(email);
 	}
 

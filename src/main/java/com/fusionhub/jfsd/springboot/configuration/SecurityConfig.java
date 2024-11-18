@@ -19,8 +19,8 @@ public class SecurityConfig {
         http.sessionManagement(management -> management.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(authorize -> authorize
             	.requestMatchers("/admin/auth/**").permitAll()
-            		//.requestMatchers("/admin/**").permitAll()
-                .requestMatchers("/admin/**").hasAuthority("ADMIN") // Restrict admin endpoints
+            	.requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
+                .requestMatchers("/admin/students/**").hasAuthority("ROLE_ADMIN") // Restrict admin endpoints
                 .anyRequest().permitAll()) 
             .addFilterBefore(new JwtTokenValidator(), BasicAuthenticationFilter.class)
             .csrf(csrf -> csrf.disable());

@@ -30,7 +30,7 @@ public class CustomAdminDetailsImpl implements UserDetailsService{
 		
 		
 		List<GrantedAuthority> authorities = new ArrayList<>();
-		authorities.add(new SimpleGrantedAuthority(user.getRole()));
+		authorities.add(new SimpleGrantedAuthority("ADMIN"));
 		
 		return new org.springframework.security.core.userdetails.User(user.getEmail() ,user.getPassword(), 
 				authorities);
