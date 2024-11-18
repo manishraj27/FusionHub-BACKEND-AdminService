@@ -17,7 +17,7 @@ public class AdminStudentController {
     @GetMapping
     public ResponseEntity<?> getAllStudents(@RequestHeader("Authorization") String jwt) {
         try {
-            return ResponseEntity.ok(studentManagementService.getAllStudents(jwt.substring(7))); // Remove "Bearer " from the JWT
+            return ResponseEntity.ok(studentManagementService.getAllStudents(jwt.substring(7))); 
         } catch (Exception e) {
             return ResponseEntity.status(500).body("Error fetching students");
         }
@@ -41,4 +41,21 @@ public class AdminStudentController {
             return ResponseEntity.status(500).body("Error deleting student");
         }
     }
+    
+    @PutMapping("/{studentId}/status")  // Changed from PATCH to PUT
+    public ResponseEntity<?> updateStudentStatus(
+            @RequestHeader("Authorization") String jwt,
+            @PathVariable Long studentId,
+            @RequestParam String status) {
+        try {
+            studentManagementService.updateStudentStatus(jwt.substring(7), studentId, status);
+            return ResponseEntity.ok("Student status updated to " + status);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body(e.getMessage());
+        }
+    }
+
+    
 }

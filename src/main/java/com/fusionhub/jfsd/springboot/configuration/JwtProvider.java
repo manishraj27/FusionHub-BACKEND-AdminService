@@ -30,7 +30,7 @@ public class JwtProvider {
     
     public static String getEmailFromToken(String jwt) {
         if (jwt.startsWith("Bearer ")) {
-            jwt = jwt.substring(7); // Remove "Bearer " prefix
+            jwt = jwt.substring(7);
         }
         Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
         return String.valueOf(claims.get("email"));
@@ -38,7 +38,7 @@ public class JwtProvider {
 
     public static String getRoleFromToken(String jwt) {
         if (jwt.startsWith("Bearer ")) {
-            jwt = jwt.substring(7); // Remove "Bearer " prefix
+            jwt = jwt.substring(7); 
         }
         Claims claims = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(jwt).getBody();
         return String.valueOf(claims.get("role"));

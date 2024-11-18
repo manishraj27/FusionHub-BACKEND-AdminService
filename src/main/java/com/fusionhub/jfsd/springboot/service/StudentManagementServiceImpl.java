@@ -16,11 +16,11 @@ public class StudentManagementServiceImpl implements StudentManagementService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String studentServiceUrl = "http://localhost:2004/adminapi/users"; // Adjust the base URL for StudentService
+    private final String studentServiceUrl = "http://localhost:2000/adminapi/users"; // Adjust the base URL for StudentService
 
     @Override
     public List<?> getAllStudents(String jwt) throws Exception {
-        String url = studentServiceUrl; // Add any specific endpoint path if needed
+        String url = studentServiceUrl; 
         HttpHeaders headers = new HttpHeaders();
         headers.set("Authorization", "Bearer " + jwt);
         HttpEntity<String> entity = new HttpEntity<>(headers);
@@ -49,4 +49,35 @@ public class StudentManagementServiceImpl implements StudentManagementService {
 
         restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
     }
+    
+    @Override
+    public void updateStudentStatus(String jwt, Long studentId, String status) throws Exception {
+ 
+        String upperStatus = status.toUpperCase();
+        if (!upperStatus.equals("ACCEPTED") && !upperStatus.equals("REJECTED") && !upperStatus.equals("PENDING")) {
+            throw new IllegalArgumentException("Invalid status. Use 'ACCEPTED', 'REJECTED', or 'PENDING'.");
+        }
+
+        String url = studentServiceUrl + "/" + studentId + "/status?status=" + upperStatus;
+        
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + jwt);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
+
+        try {
+            ResponseEntity<String> response = restTemplate.exchange(
+                url,
+                HttpMethod.PUT,  
+                entity,
+                String.class
+            );
+            
+            if (!response.getStatusCode().is2xxSuccessful()) {
+                throw new Exception("Failed to update status. Server returned: " + response.getStatusCode());
+            }
+        } catch (Exception e) {
+            throw new Exception("Error updating student status: " + e.getMessage());
+        }
+    }
+    
 }

@@ -11,4 +11,8 @@ public interface StudentManagementService {
     
     
     void deleteStudent(String jwt, Long studentId) throws Exception;
+    
+    void updateStudentStatus(String jwt, Long studentId, String status) throws Exception;
+
+    
 }
