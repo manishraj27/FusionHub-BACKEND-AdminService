@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.fusionhub.jfsd.springboot.response.MessageResponse;
+
 @Service
 public class StudentManagementServiceImpl implements StudentManagementService {
 
@@ -47,8 +49,16 @@ public class StudentManagementServiceImpl implements StudentManagementService {
         headers.set("Authorization", "Bearer " + jwt);
         HttpEntity<String> entity = new HttpEntity<>(headers);
 
-        restTemplate.exchange(url, HttpMethod.DELETE, entity, Void.class);
+        // Call to StudentService for deleting the student
+        ResponseEntity<MessageResponse> response = restTemplate.exchange(
+                url, HttpMethod.DELETE, entity, MessageResponse.class);
+        
+        // Check if the deletion was successful
+        if (!response.getStatusCode().is2xxSuccessful()) {
+            throw new Exception("Failed to delete student. Server returned: " + response.getStatusCode());
+        }
     }
+
     
     @Override
     public void updateStudentStatus(String jwt, Long studentId, String status) throws Exception {

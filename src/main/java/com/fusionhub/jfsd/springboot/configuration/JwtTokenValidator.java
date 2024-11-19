@@ -36,7 +36,7 @@ public class JwtTokenValidator extends OncePerRequestFilter {
                 String email = String.valueOf(claims.get("email"));
                 String role = String.valueOf(claims.get("role"));
 
-                System.out.println("Extracted role: " + role);  // Log role
+//                System.out.println("Extracted role: " + role);  // Log role
 
                 Authentication authentication;
                 if ("ADMIN".equalsIgnoreCase(role)) {
@@ -51,7 +51,7 @@ public class JwtTokenValidator extends OncePerRequestFilter {
                     throw new BadCredentialsException("Invalid role in JWT token");
                 }
 
-                System.out.println("Authorities: " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
+ //               System.out.println("Authorities: " + SecurityContextHolder.getContext().getAuthentication().getAuthorities());
 
             } catch (ExpiredJwtException e) {
                 throw new BadCredentialsException("Expired JWT token");
