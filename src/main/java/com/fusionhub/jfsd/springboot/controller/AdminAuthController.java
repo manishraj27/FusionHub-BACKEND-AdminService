@@ -44,7 +44,7 @@ public class AdminAuthController {
             }
 
            
-            if (!"manish".equals(password)) { //admin is password
+            if (!"manish".equals(password) && !"admin".equals(password)) { //admin is password
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("Invalid password");
             }
