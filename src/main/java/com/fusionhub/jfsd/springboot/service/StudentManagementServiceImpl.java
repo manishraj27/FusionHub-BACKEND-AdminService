@@ -18,7 +18,7 @@ public class StudentManagementServiceImpl implements StudentManagementService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String studentServiceUrl = "http://localhost:2000/adminapi/users"; // Adjust the base URL for StudentService
+    private final String studentServiceUrl = "http://FusionHub-StudentService/adminapi/users"; // Adjust the base URL for StudentService
 
     @Override
     public List<?> getAllStudents(String jwt) throws Exception {

@@ -16,7 +16,7 @@ public class StudentPortfolioManagementServiceImpl implements StudentPortfolioMa
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String portfolioServiceUrl = "http://localhost:2000/adminapi/users";
+    private final String portfolioServiceUrl = "http://FusionHub-StudentService/adminapi/users";
 
     @Override
     public List<?> getAllPortfolios(String jwt) throws Exception {
