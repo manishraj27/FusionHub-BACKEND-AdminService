@@ -9,6 +9,6 @@ public class StatusController {
    
     @GetMapping("/")
     public String checkServerStatus() {
-        return "Server is ON";
+        return "Admin Server is Up and Running!";
     }
 }
