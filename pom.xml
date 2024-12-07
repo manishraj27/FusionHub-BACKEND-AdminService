@@ -11,7 +11,7 @@
 	<groupId>com.fusionhub.jfsd.springboot</groupId>
 	<artifactId>FusionHub-AdminService</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>FusionHub-AdminService</name>
 	<description>Admin Service</description>
 	<url/>
@@ -28,7 +28,7 @@
 		<url/>
 	</scm>
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
