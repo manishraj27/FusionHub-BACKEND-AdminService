@@ -1,0 +1,9 @@
+# Ignore .git
+.git
+# Ignore target directory
+/target/
+# Ignore large files or unnecessary directories
+*.log
+*.tmp
+*.bak
+node_modules/
