@@ -18,7 +18,7 @@ public class StudentManagementServiceImpl implements StudentManagementService {
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String studentServiceUrl = "https://fusionhub-backend-studentservice-production.up.railway.app/adminapi/users"; //eureka server discovery
+    private final String studentServiceUrl = "https://fusionhub-backend-studentservice.onrender.com/adminapi/users"; //eureka server discovery
 
     @Override
     public List<?> getAllStudents(String jwt) throws Exception {

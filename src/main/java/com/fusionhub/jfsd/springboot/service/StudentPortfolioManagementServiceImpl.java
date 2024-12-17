@@ -16,7 +16,7 @@ public class StudentPortfolioManagementServiceImpl implements StudentPortfolioMa
     @Autowired
     private RestTemplate restTemplate;
 
-    private final String portfolioServiceUrl = "https://fusionhub-backend-studentservice-production.up.railway.app/adminapi/users";
+    private final String portfolioServiceUrl = "https://fusionhub-backend-studentservice.onrender.com/adminapi/users";
 
     @Override
     public List<?> getAllPortfolios(String jwt) throws Exception {
